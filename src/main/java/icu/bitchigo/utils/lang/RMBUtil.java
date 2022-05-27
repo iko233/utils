@@ -1,5 +1,7 @@
 package icu.bitchigo.utils.lang;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 
 public class RMBUtil {
@@ -8,7 +10,10 @@ public class RMBUtil {
     private static final int FEN = 3;
     private static final int Li = 4;
 
-    private static BigDecimal coverter(BigDecimal amount,EnumRMBUnit originUnit,EnumRMBUnit targetUnit){
+    private static BigDecimal coverter(@NotNull BigDecimal amount, @NotNull EnumRMBUnit originUnit, @NotNull EnumRMBUnit targetUnit){
+        if (NullUtil.isAllNotNull(amount, originUnit,targetUnit)){
+            return null;
+        }
         return amount.movePointLeft(targetUnit.getCode()- originUnit.getCode());
     }
 
@@ -21,11 +26,11 @@ public class RMBUtil {
         /**
          * 名称
          */
-        private String name;
+        private final String name;
         /**
          * 状态码
          */
-        private int code;
+        private final int code;
 
         EnumRMBUnit(String name,int code){
             this.name = name;
