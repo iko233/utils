@@ -1,5 +1,7 @@
 package icu.bitchigo.utils.lang;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * null工具类
  *
@@ -13,10 +15,11 @@ public class NullUtil {
     public static boolean isNull(Object obj) {
         return obj == null;
     }
+
     /**
      * 是否存在null
      */
-    public static boolean isExistNull(Object...obj) {
+    public static boolean isExistNull(Object... obj) {
         for (Object o : obj) {
             if (isNull(o)) {
                 return true;
@@ -24,6 +27,7 @@ public class NullUtil {
         }
         return false;
     }
+
     /**
      * 是否不为null
      */
@@ -34,7 +38,7 @@ public class NullUtil {
     /**
      * 是否都不为null
      */
-    public static boolean isAllNotNull(Object...obj) {
+    public static boolean isAllNotNull(Object... obj) {
         for (Object o : obj) {
             if (isNull(o)) {
                 return false;

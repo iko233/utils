@@ -10,7 +10,7 @@ public class DateUtil {
 
     private static final String CHINESE_DATE_AND_TIME_STANDER_FORMAT = "yyyy年MM月dd日 HH时mm分ss秒";
 
-    private static final String CHINESE_DATE_STANDER_FORMAT = "yyyy年MM月dd日 HH时mm分ss秒";
+    private static final String CHINESE_DATE_STANDER_FORMAT = "yyyy年MM月dd日";
 
     private static final String DATE_AND_TIME_STANDER_FORMAT = "yyyy-MM-dd HH:mm:ss";
 

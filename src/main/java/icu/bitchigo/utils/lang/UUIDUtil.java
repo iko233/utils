@@ -4,15 +4,15 @@ import java.util.UUID;
 
 public class UUIDUtil {
 
-    public String getSimpleUUID() {
+    public static String getSimpleUUID() {
         return getUUIDString().replace("-", "");
     }
 
-    public String getUUIDString() {
+    public static String getUUIDString() {
         return getUUID().toString();
     }
 
-    public UUID getUUID() {
+    public static UUID getUUID() {
         return UUID.randomUUID();
     }
 

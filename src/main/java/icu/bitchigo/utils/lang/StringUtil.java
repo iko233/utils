@@ -72,29 +72,6 @@ public class StringUtil {
         return traverse4StringBuilder(str, CharacterUtil::toLowerCase);
     }
 
-//    /**
-//     * 字符串转大骆驼
-//     *
-//     * @param str str
-//     * @return {@link String}
-//     */
-//    public static String toUpperCamelCase(final String str) {
-//        if (isEmpty(str)) {
-//            return str;
-//        }
-//        String[] strings = StringUtils.splitByCharacterTypeCamelCase(str);
-//        return traverse4StringBuilder(str, (c)->{
-//
-//        });
-//    }
-
-//    public static String toLowerCamelCase(final String str) {
-//        if (isEmpty(str)) {
-//            return str;
-//        }
-//
-//    }
-
     public static String toUnderLineCase(final String str, boolean isUpperCase) {
         if (isUpperCase) {
             return toUpperUnderLineCase(str);
@@ -153,7 +130,10 @@ public class StringUtil {
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
-            sb.append(function.apply(str.charAt(i)));
+            Character character = function.apply(str.charAt(i));
+            if(NullUtil.isNotNull(character)) {
+                sb.append(character);
+            }
         }
         return sb.toString();
     }
