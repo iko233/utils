@@ -5,6 +5,14 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 public class RMBUtil {
+    /**
+     * 单位转换
+     *
+     * @param amount     金额
+     * @param originUnit 来源单位
+     * @param targetUnit 目标单位
+     * @return {@link BigDecimal}
+     */
     private static BigDecimal coverter(@NotNull BigDecimal amount, @NotNull EnumRMBUnit originUnit, @NotNull EnumRMBUnit targetUnit){
         if (NullUtil.isAllNotNull(amount, originUnit,targetUnit)){
             return null;
