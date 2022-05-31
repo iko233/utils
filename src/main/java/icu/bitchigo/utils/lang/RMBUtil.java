@@ -5,11 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 
 public class RMBUtil {
-    private static final int YUAN = 0;
-    private static final int JIAO = 1;
-    private static final int FEN = 3;
-    private static final int Li = 4;
-
     private static BigDecimal coverter(@NotNull BigDecimal amount, @NotNull EnumRMBUnit originUnit, @NotNull EnumRMBUnit targetUnit){
         if (NullUtil.isAllNotNull(amount, originUnit,targetUnit)){
             return null;
