@@ -19,7 +19,7 @@ public class NullUtil {
     /**
      * 是否存在null
      */
-    public static boolean isExistNull(Object... obj) {
+    public static boolean isAnyNull(Object... obj) {
         for (Object o : obj) {
             if (isNull(o)) {
                 return true;

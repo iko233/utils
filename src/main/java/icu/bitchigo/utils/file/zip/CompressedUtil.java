@@ -66,12 +66,12 @@ public class CompressedUtil {
     /**
      * 枚举压缩文件类型
      *
-     * @author ln102
+     * @author iko233
      * @date 2022/05/31
      */
     public enum EnumFileType {
 
-
+        ZIP("zip", ".zip", ZipFileUtil::decompress, ZipFileUtil::compress),
 
         ;
 

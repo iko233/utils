@@ -25,6 +25,19 @@ public class StringUtil {
         return StringUtils.isEmpty(cs);
     }
 
+    public static boolean isExistEmpty(final CharSequence...cs) {
+        for (CharSequence c : cs) {
+            if (isEmpty(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isAllNotEmpty(final CharSequence...cs){
+        return !isExistEmpty(cs);
+    }
+
     /**
      * 判断字符序列是否非null或者不为""
      *
