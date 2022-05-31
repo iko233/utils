@@ -25,6 +25,12 @@ public class StringUtil {
         return StringUtils.isEmpty(cs);
     }
 
+    /**
+     * 是否存在空
+     *
+     * @param cs cs
+     * @return boolean
+     */
     public static boolean isExistEmpty(final CharSequence...cs) {
         for (CharSequence c : cs) {
             if (isEmpty(c)) {
@@ -34,6 +40,12 @@ public class StringUtil {
         return false;
     }
 
+    /**
+     * 是否全部不为空
+     *
+     * @param cs cs
+     * @return boolean
+     */
     public static boolean isAllNotEmpty(final CharSequence...cs){
         return !isExistEmpty(cs);
     }
