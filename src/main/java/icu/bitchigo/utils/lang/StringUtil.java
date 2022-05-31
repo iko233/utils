@@ -26,7 +26,7 @@ public class StringUtil {
     }
 
     /**
-     * 判断字符序列是否非null或者为""
+     * 判断字符序列是否非null或者不为""
      *
      * @param cs cs
      * @return boolean
