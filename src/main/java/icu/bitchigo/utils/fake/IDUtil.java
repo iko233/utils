@@ -19,7 +19,7 @@ public class IDUtil {
      * @return {@link String}
      */
     public static String SimpleUUID() {
-        return UUIDUtil.getSimpleUUID();
+        return UUIDUtil.getSimpleUUIDString();
     }
 
 }

@@ -17,7 +17,6 @@ public class RandomUtil {
         return nextLong() * (nextBoolean() ? 1 : -1);
     }
 
-
     public static int rangeInt(int min, int max) {
         return RANDOM.nextInt(max - min) + min;
     }

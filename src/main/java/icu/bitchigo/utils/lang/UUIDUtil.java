@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class UUIDUtil {
 
-    public static String getSimpleUUID() {
+    public static String getSimpleUUIDString() {
         return getUUIDString().replace("-", "");
     }
 
