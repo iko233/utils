@@ -1,18 +1,19 @@
 package icu.bitchigo.utils.file.zip;
 
-import icu.bitchigo.utils.file.FileProcessStatus;
+import icu.bitchigo.utils.file.EnumFileProcessStatus;
 import icu.bitchigo.utils.lang.StringUtil;
+
 import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 
-public class ZipFileUtil {
+class ZipFileUtil {
 
-    public static FileProcessStatus decompress(String filePath, String targetPath) {
+    public static EnumFileProcessStatus decompress(String filePath, String targetPath) {
         //判断路径是否为空
-        if (StringUtil.isAllNotEmpty(filePath,targetPath)){
-            return FileProcessStatus.BAD_PATH;
+        if (StringUtil.isAllNotEmpty(filePath, targetPath)) {
+            return EnumFileProcessStatus.BAD_PATH;
         }
         File destDir = new File(targetPath);
         byte[] buffer = new byte[1024];
@@ -20,7 +21,7 @@ public class ZipFileUtil {
         try {
             zis = new ZipInputStream(new FileInputStream(filePath));
         } catch (FileNotFoundException e) {
-            return FileProcessStatus.FILE_NOT_FOUND;
+            return EnumFileProcessStatus.FILE_NOT_FOUND;
         }
         ZipEntry zipEntry = null;
         try {
@@ -30,7 +31,7 @@ public class ZipFileUtil {
                 String destDirPath = destDir.getCanonicalPath();
                 String destFilePath = destFile.getCanonicalPath();
                 if (!destFilePath.startsWith(destDirPath + File.separator)) {
-                    return FileProcessStatus.IO_ERROR;
+                    return EnumFileProcessStatus.IO_ERROR;
                 }
                 FileOutputStream fos = new FileOutputStream(destFile);
                 int len;
@@ -42,22 +43,22 @@ public class ZipFileUtil {
             }
         } catch (ZipException e) {
             //todo log
-            return FileProcessStatus.FILE_CORRUPTION;
+            return EnumFileProcessStatus.FILE_CORRUPTION;
         } catch (IOException e) {
             //todo log
-            return FileProcessStatus.IO_ERROR;
+            return EnumFileProcessStatus.IO_ERROR;
         } finally {
             try {
                 zis.closeEntry();
                 zis.close();
             } catch (IOException e) {
-                return FileProcessStatus.IO_ERROR;
+                return EnumFileProcessStatus.IO_ERROR;
             }
         }
-        return FileProcessStatus.SUCCESS;
+        return EnumFileProcessStatus.SUCCESS;
     }
 
-    public static FileProcessStatus compress(String filePath, String targetPath) {
-        return FileProcessStatus.SUCCESS;
+    public static EnumFileProcessStatus compress(String filePath, String targetPath) {
+        return EnumFileProcessStatus.SUCCESS;
     }
 }
