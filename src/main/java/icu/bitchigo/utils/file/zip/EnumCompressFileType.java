@@ -10,7 +10,7 @@ import java.util.function.BiFunction;
  * @author iko233
  * @date 2022/05/31
  */
-public enum EnumZipFileType {
+public enum EnumCompressFileType {
         ZIP("zip", ".zip", ZipFileUtil::decompress, ZipFileUtil::compress),
         TAR("tar", ".tar", TarFileUtil::decompress, TarFileUtil::compress),
         SevenZip("7z", ".7z", SevenZipFileUtil::decompress, SevenZipFileUtil::compress),
@@ -40,22 +40,22 @@ public enum EnumZipFileType {
          * 获取文件类型
          *
          * @param type 类型
-         * @return {@link EnumZipFileType}
+         * @return {@link EnumCompressFileType}
          */
-        public static EnumZipFileType getFileType(String type) {
+        public static EnumCompressFileType getFileType(String type) {
             if (StringUtil.isEmpty(type)) {
                 return null;
             }
             type = type.contains(".") ? type : '.' + type;
-            for (EnumZipFileType enumZipFileType : values()) {
-                if (StringUtil.toLowerCase(type).equals(enumZipFileType.suffix)) {
-                    return enumZipFileType;
+            for (EnumCompressFileType enumCompressFileType : values()) {
+                if (StringUtil.toLowerCase(type).equals(enumCompressFileType.suffix)) {
+                    return enumCompressFileType;
                 }
             }
             return null;
         }
 
-        private EnumZipFileType(final String type, final String suffix, BiFunction<String, String, EnumFileProcessStatus> decompressFunction, BiFunction<String, String, EnumFileProcessStatus> compressFunction) {
+        private EnumCompressFileType(final String type, final String suffix, BiFunction<String, String, EnumFileProcessStatus> decompressFunction, BiFunction<String, String, EnumFileProcessStatus> compressFunction) {
             this.type = type;
             this.suffix = suffix;
             this.decompressFunction = decompressFunction;

@@ -17,45 +17,49 @@ public class CompressedUtil {
     /**
      * 自动判断压缩文件类型并解压
      *
-     * @param filePath   文件路径
+     * @param sourcePath   文件路径
      * @param targetPath 目标路径
      * @return {@link EnumFileProcessStatus}
      */
-    public static EnumFileProcessStatus decompress(String filePath, String targetPath) {
+    public static EnumFileProcessStatus decompress(String sourcePath, String targetPath) {
         //根据文件后缀判断文件类型
-        String fileExtension = FileUtil.getFileExtension(filePath);
+        String fileExtension = FileUtil.getFileExtension(sourcePath);
         if (StringUtil.isEmpty(fileExtension)) {
             return EnumFileProcessStatus.UNKNOWN_FILE_TYPE;
         }
-        EnumZipFileType fileType = EnumZipFileType.getFileType(fileExtension);
+        EnumCompressFileType fileType = EnumCompressFileType.getFileType(fileExtension);
         //判断是否为可识别的文件类型
         if (NullUtil.isNull(fileType)) {
             return EnumFileProcessStatus.UNKNOWN_FILE_TYPE;
         }
-        return decompress(filePath, targetPath, fileType);
+        return decompress(sourcePath, targetPath, fileType);
     }
 
     /**
      * 解压缩
      *
-     * @param filePath        文件路径
-     * @param targetPath      目标路径
-     * @param enumZipFileType 压缩文件类型
+     * @param sourcePath             文件路径
+     * @param targetPath           目标路径
+     * @param enumCompressFileType 压缩文件类型
      * @return {@link EnumFileProcessStatus}
      */
-    public static EnumFileProcessStatus decompress(String filePath, String targetPath, EnumZipFileType enumZipFileType) {
-        return enumZipFileType.getDecompressFunction().apply(filePath, targetPath);
+    public static EnumFileProcessStatus decompress(String sourcePath, String targetPath, EnumCompressFileType enumCompressFileType) {
+        return enumCompressFileType.getDecompressFunction().apply(sourcePath, targetPath);
     }
 
     /**
      * 压缩文件
      *
-     * @param filePath        文件路径
-     * @param targetPath      目标路径
-     * @param enumZipFileType 压缩文件类型
+     * @param sourcePath             文件路径
+     * @param targetPath           目标路径
+     * @param enumCompressFileType 压缩文件类型
      * @return {@link EnumFileProcessStatus}
      */
-    public static EnumFileProcessStatus compress(String filePath, String targetPath, EnumZipFileType enumZipFileType) {
-        return enumZipFileType.getCompressFunction().apply(filePath, targetPath);
+    public static EnumFileProcessStatus compress(String sourcePath, String targetPath, EnumCompressFileType enumCompressFileType) {
+        return enumCompressFileType.getCompressFunction().apply(sourcePath, targetPath);
+    }
+
+    public static EnumFileProcessStatus compress(String sourcePath, EnumCompressFileType enumCompressFileType) {
+        return enumCompressFileType.getCompressFunction().apply(sourcePath, null);
     }
 }

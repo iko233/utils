@@ -10,16 +10,16 @@ import java.util.zip.ZipInputStream;
 
 class ZipFileUtil {
 
-    public static EnumFileProcessStatus decompress(String filePath, String targetPath) {
+    public static EnumFileProcessStatus decompress(String sourcePath, String targetPath) {
         //判断路径是否为空
-        if (StringUtil.isAllNotEmpty(filePath, targetPath)) {
+        if (StringUtil.isExistEmpty(sourcePath, targetPath)) {
             return EnumFileProcessStatus.BAD_PATH;
         }
         File destDir = new File(targetPath);
         byte[] buffer = new byte[1024];
         ZipInputStream zis = null;
         try {
-            zis = new ZipInputStream(new FileInputStream(filePath));
+            zis = new ZipInputStream(new FileInputStream(sourcePath));
         } catch (FileNotFoundException e) {
             return EnumFileProcessStatus.FILE_NOT_FOUND;
         }
@@ -29,8 +29,8 @@ class ZipFileUtil {
             while (zipEntry != null) {
                 File destFile = new File(targetPath, zipEntry.getName());
                 String destDirPath = destDir.getCanonicalPath();
-                String destFilePath = destFile.getCanonicalPath();
-                if (!destFilePath.startsWith(destDirPath + File.separator)) {
+                String destsourcePath = destFile.getCanonicalPath();
+                if (!destsourcePath.startsWith(destDirPath + File.separator)) {
                     return EnumFileProcessStatus.IO_ERROR;
                 }
                 FileOutputStream fos = new FileOutputStream(destFile);
@@ -58,7 +58,8 @@ class ZipFileUtil {
         return EnumFileProcessStatus.SUCCESS;
     }
 
-    public static EnumFileProcessStatus compress(String filePath, String targetPath) {
+    public static EnumFileProcessStatus compress(String sourcePath, String targetPath) {
         return EnumFileProcessStatus.SUCCESS;
     }
+
 }

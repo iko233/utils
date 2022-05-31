@@ -2,7 +2,7 @@ package icu.bitchigo.utils.file.zip;
 
 import icu.bitchigo.utils.file.EnumFileProcessStatus;
 
-public class TarFileUtil {
+class TarFileUtil {
     public static EnumFileProcessStatus decompress(String filePath, String targetPath) {
         return EnumFileProcessStatus.SUCCESS;
     }
