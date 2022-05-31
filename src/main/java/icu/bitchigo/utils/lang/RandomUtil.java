@@ -3,15 +3,34 @@ package icu.bitchigo.utils.lang;
 import java.util.Random;
 
 public class RandomUtil {
-    public static Long number(Long min, Long max) {
-        return new Random().nextLong(max - min) + min;
+    private static final Random RANDOM = new Random();
+
+    public static long nextLong() {
+        return RANDOM.nextLong();
     }
 
-    public static String numberString(Long min, Long max, int length) {
-        return String.format("%0" + length + "d", number(min, max));
+    public static Long rangeLong(Long min, Long max) {
+        return RANDOM.nextLong(max - min) + min;
     }
 
-    public static String numberString(Long min, Long max) {
-        return String.format("%d", number(min, max));
+    public static long nextSignedLong() {
+        return nextLong() * (nextBoolean() ? 1 : -1);
+    }
+
+
+    public static int rangeInt(int min, int max) {
+        return RANDOM.nextInt(max - min) + min;
+    }
+
+    public static int nextInt() {
+        return RANDOM.nextInt();
+    }
+
+    public static int nextSignedInt() {
+        return nextInt() * (nextBoolean() ? 1 : -1);
+    }
+
+    public static boolean nextBoolean() {
+        return RANDOM.nextBoolean();
     }
 }
