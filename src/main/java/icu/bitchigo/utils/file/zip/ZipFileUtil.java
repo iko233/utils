@@ -59,6 +59,7 @@ class ZipFileUtil {
     }
 
     public static EnumFileProcessStatus compress(String sourcePath, String targetPath) {
+
         return EnumFileProcessStatus.SUCCESS;
     }
 

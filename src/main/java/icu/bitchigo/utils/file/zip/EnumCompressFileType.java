@@ -55,7 +55,7 @@ public enum EnumCompressFileType {
             return null;
         }
 
-        private EnumCompressFileType(final String type, final String suffix, BiFunction<String, String, EnumFileProcessStatus> decompressFunction, BiFunction<String, String, EnumFileProcessStatus> compressFunction) {
+        EnumCompressFileType(final String type, final String suffix, BiFunction<String, String, EnumFileProcessStatus> decompressFunction, BiFunction<String, String, EnumFileProcessStatus> compressFunction) {
             this.type = type;
             this.suffix = suffix;
             this.decompressFunction = decompressFunction;
